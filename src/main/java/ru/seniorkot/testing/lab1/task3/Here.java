@@ -7,7 +7,7 @@ public class Here {
     private Arthur arthur;
     private ArrayList<DentrassiUnderwear> allDentrassiUnderwear;
     private ArrayList<SquornshellousMattress> allSquornshellousMattresses;
-    private Cornflakes cornflakes;
+    private CornflakesPacket cornflakesPacket;
 
     Here() {
 
@@ -18,20 +18,20 @@ public class Here {
         allSquornshellousMattresses.add(new SquornshellousMattress());
         allSquornshellousMattresses.add(new SquornshellousMattress());
 
-        cornflakes = null;
+        cornflakesPacket = null;
 
         //materialize Ford
         betelgeuseHuman = new Ford();
 
         //materialize Arthur
         arthur = new Arthur();
-
+        arthur.lookAtFord(true);
     }
 
     AbstractHuman getBetelgeuseHuman() {return betelgeuseHuman;}
     Arthur getArthur() {return arthur;}
     ArrayList<DentrassiUnderwear> getAllDentrassiUnderwear() {return allDentrassiUnderwear;}
     ArrayList<SquornshellousMattress> getAllSquornshellousMattresses() {return allSquornshellousMattresses;}
-    Cornflakes getCornflakes() {return cornflakes;}
+    CornflakesPacket getCornflakesPacket() {return cornflakesPacket;}
 
 }

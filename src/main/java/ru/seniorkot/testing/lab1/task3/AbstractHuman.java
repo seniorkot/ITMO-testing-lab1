@@ -9,4 +9,5 @@ abstract public class AbstractHuman {
 
     Origin origin;
     Hand[] hand;
+    boolean offeringToPutFishInEar;
 }

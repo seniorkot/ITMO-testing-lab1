@@ -6,4 +6,7 @@ public class Eyes {
     Eyes() {
         blinking = false;
     }
+    boolean seeObject(Object object) {
+        return object == null ? false : true;
+    }
 }

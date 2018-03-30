@@ -18,19 +18,31 @@ public class Arthur {
         eyes.blinking = blinking;
     }
 
+
     void feelDetermined() {
         determination = Determination.HIGH;
     }
 
     void wantSFMCObjectAmongStuff(Here here) {
+        //if there are DentrassiUnderwear and SquornshellousMattresses
         if(!here.getAllDentrassiUnderwear().isEmpty() && !here.getAllSquornshellousMattresses().isEmpty()){
 
-            if(here.getBetelgeuseHuman().hand[0].object != null &&
-                    here.getBetelgeuseHuman().hand[0].object.getClass() == Flacon.class) {
-                Flacon flacon = (Flacon)here.getBetelgeuseHuman().hand[0].object;
+            //if BetelgeuseHuman exists and is holding a Flacon
+            if(here.getBetelgeuseHuman().hand[0].heldObject != null &&
+                    here.getBetelgeuseHuman().hand[0].heldObject.getClass() == Flacon.class) {
+                Flacon flacon = (Flacon)here.getBetelgeuseHuman().hand[0].heldObject;
 
+                //if Flacon exists and contains a Fish
                 if (flacon.object != null && flacon.object.getClass() == Fish.class) {
-                    
+                    Fish fish = (Fish)flacon.object;
+
+                    //if Fish is SMALL and BetelgeuseHuman is offeringToPutFishInEar and Arthur sees CornflackesPacket
+                    if (fish.size == Fish.Size.SMALL &&
+                            here.getBetelgeuseHuman().offeringToPutFishInEar &&
+                            eyes.seeObject(here.getCornflakesPacket())) {
+                        //then feelDetermined()
+                        feelDetermined();
+                    }
                 }
             }
         }
