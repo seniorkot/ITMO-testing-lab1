@@ -16,7 +16,7 @@ public class Arthur {
 
     }
 
-    void wantSFMCObject() {
+    void wantSFMCObjectHere() {
 
     }
 

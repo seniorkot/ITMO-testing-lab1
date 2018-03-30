@@ -1,21 +1,23 @@
 package ru.seniorkot.testing.lab1.task3;
 
+import java.awt.Color;
+
 public class Ford extends AbstractHuman{
 
-    Hand hand;
+    private Origin origin;
+    private Hand hand;
 
     Ford() {
-        hand = new Hand(new Bottle("glass", new Fish("small", "yellow")));
-        hand.bottle.fish.swim(true);
-
+        origin = Origin.BETELGEUSE;
+        hand = new Hand(null);
+        hand.hold(new Bottle(Bottle.Material.GLASS, new Fish(Fish.Size.SMALL, Color.YELLOW)));
     }
 
-    Fish offerFish() {
-        return hand.bottle.fish;
+    Object offerItemInTheEar() {
+        return hand.item;
     }
 
-    @Override
-    String getPlanet() {
-        return "Betelgeuse";
+    Origin getOrigin() {
+        return origin;
     }
 }

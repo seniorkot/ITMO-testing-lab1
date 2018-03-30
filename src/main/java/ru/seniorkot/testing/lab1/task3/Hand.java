@@ -2,9 +2,13 @@ package ru.seniorkot.testing.lab1.task3;
 
 public class Hand {
 
-    Bottle bottle;
+    public Object item;
 
-    Hand(Bottle bottle) {
-        this.bottle = bottle;
+    Hand(Object item) {
+        this.item = null;
+    }
+
+    public void hold(Object item) {
+        this.item = item;
     }
 }
