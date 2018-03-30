@@ -7,7 +7,7 @@ public class Arthur {
     }
 
     Eyes eyes;
-    Determination determination;
+    private Determination determination;
 
     Arthur() {
         eyes = new Eyes();
@@ -15,7 +15,7 @@ public class Arthur {
     }
 
     void lookAtFord(boolean blinking) {
-        eyes.blinking = blinking;
+        eyes.startBlinking();
     }
 
 
@@ -23,22 +23,24 @@ public class Arthur {
         determination = Determination.HIGH;
     }
 
+    Determination getDetermination() {return determination;}
+
     void wantSFMCObjectAmongStuff(Here here) {
         //if there are DentrassiUnderwear and SquornshellousMattresses
         if(!here.getAllDentrassiUnderwear().isEmpty() && !here.getAllSquornshellousMattresses().isEmpty()){
 
             //if BetelgeuseHuman exists and is holding a Flacon
-            if(here.getBetelgeuseHuman().hand[0].heldObject != null &&
-                    here.getBetelgeuseHuman().hand[0].heldObject.getClass() == Flacon.class) {
-                Flacon flacon = (Flacon)here.getBetelgeuseHuman().hand[0].heldObject;
+            if(here.getBetelgeuseHuman().hand[0].getHeldObject() != null &&
+                    here.getBetelgeuseHuman().hand[0].getHeldObject().getClass() == Flacon.class) {
+                Flacon flacon = (Flacon)here.getBetelgeuseHuman().hand[0].getHeldObject();
 
                 //if Flacon exists and contains a Fish
-                if (flacon.object != null && flacon.object.getClass() == Fish.class) {
-                    Fish fish = (Fish)flacon.object;
+                if (flacon.getObject() != null && flacon.getObject().getClass() == Fish.class) {
+                    Fish fish = (Fish)flacon.getObject();
 
-                    //if Fish is SMALL and BetelgeuseHuman is offeringToPutFishInEar and Arthur sees CornflackesPacket
+                    //if Fish is SMALL and BetelgeuseHuman is offeringToPutSmallFishInEar and Arthur sees CornflackesPacket
                     if (fish.size == Fish.Size.SMALL &&
-                            here.getBetelgeuseHuman().offeringToPutFishInEar &&
+                            here.getBetelgeuseHuman().offeringToPutSmallFishInEar &&
                             eyes.seeObject(here.getCornflakesPacket())) {
                         //then feelDetermined()
                         feelDetermined();

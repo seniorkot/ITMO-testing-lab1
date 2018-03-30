@@ -2,13 +2,17 @@ package ru.seniorkot.testing.lab1.task3;
 
 public class Hand {
 
-    public Object heldObject;
+    private Object heldObject;
 
     Hand(Object item) {
         this.heldObject = null;
     }
 
-    public void hold(Object item) {
+    void setHeldObject(Object item) {
         this.heldObject = item;
+    }
+
+    Object getHeldObject() {
+        return heldObject;
     }
 }

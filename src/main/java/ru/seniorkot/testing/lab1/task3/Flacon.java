@@ -6,8 +6,8 @@ public class Flacon {
         PLASTIC, GLASS
     }
 
-    Material material;
-    Object object;
+    private Material material;
+    private Object object;
 
     Flacon(Material material, Object object) {
         material = material == null ? Material.GLASS : material;
@@ -16,7 +16,11 @@ public class Flacon {
         this.object = object;
     }
 
-    Object extractObject() {
+    Material getMaterial() {
+        return material;
+    }
+
+    Object getObject() {
         return object;
     }
 }
