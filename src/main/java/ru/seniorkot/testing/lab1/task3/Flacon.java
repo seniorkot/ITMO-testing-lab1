@@ -15,4 +15,8 @@ public class Flacon {
         this.material = material;
         this.object = object;
     }
+
+    Object extractObject() {
+        return object;
+    }
 }
