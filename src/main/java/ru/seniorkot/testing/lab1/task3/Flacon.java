@@ -1,19 +1,18 @@
 package ru.seniorkot.testing.lab1.task3;
 
-public class Bottle {
+public class Flacon {
 
     public enum Material {
         PLASTIC, GLASS
     }
 
     Material material;
-    Fish fish;
+    Object object;
 
-    Bottle(Material material, Fish fish) {
+    Flacon(Material material, Object object) {
         material = material == null ? Material.GLASS : material;
-        //fish = fish == null ?
 
         this.material = material;
-        this.fish = fish;
+        this.object = object;
     }
 }

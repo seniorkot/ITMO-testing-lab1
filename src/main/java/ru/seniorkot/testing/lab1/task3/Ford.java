@@ -10,11 +10,11 @@ public class Ford extends AbstractHuman{
     Ford() {
         origin = Origin.BETELGEUSE;
         hand = new Hand(null);
-        hand.hold(new Bottle(Bottle.Material.GLASS, new Fish(Fish.Size.SMALL, Color.YELLOW)));
+        hand.hold(new Flacon(Flacon.Material.GLASS, new Fish(Fish.Size.SMALL, Color.YELLOW)));
     }
 
-    Object offerItemInTheEar() {
-        return hand.item;
+    Object offerPuttingItemInTheEar() {
+        return hand.object;
     }
 
     Origin getOrigin() {

@@ -13,11 +13,12 @@ public class Fish {
     boolean  shimmering;
 
     Fish(Size size, Color color){
-        this.size = size;
-        this.color = color;
+        this.size = size == null ? Size.SMALL : size;
+        this.color = color == null ? Color.YELLOW : color;
+        swim();
     }
 
-    void swim() {
+    private void swim() {
         this.shimmering = true;
     }
 }

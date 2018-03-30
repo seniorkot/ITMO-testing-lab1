@@ -2,13 +2,13 @@ package ru.seniorkot.testing.lab1.task3;
 
 public class Hand {
 
-    public Object item;
+    public Object object;
 
     Hand(Object item) {
-        this.item = null;
+        this.object = null;
     }
 
     public void hold(Object item) {
-        this.item = item;
+        this.object = item;
     }
 }
