@@ -5,41 +5,12 @@ import static org.junit.Assert.*;
 
 public class SortingTest {
 
-    private static final int res[] = {5, 11, 23, 33, 40, 56, 66, 67, 68, 68, 83, 93};
-
-    @Test
-    public void testInsertingSort() {
-        int a[] = {68, 23, 66, 83, 56, 67, 33, 40, 93, 5, 11, 68};
-        assertArrayEquals(Sorting.insertionSort(a), res);
-    }
-
-    @Test
-    public void testSelectiongSort() {
-        int a[] = {68, 23, 66, 83, 56, 67, 33, 40, 93, 5, 11, 68};
-        assertArrayEquals(Sorting.selectionSort(a), res);
-    }
-
-    @Test
-    public void testBubbleSort() {
-        int a[] = {68, 23, 66, 83, 56, 67, 33, 40, 93, 5, 11, 68};
-        assertArrayEquals(Sorting.bubbleSort(a), res);
-    }
-
-    @Test
-    public void testQuickSort() {
-        int a[] = {68, 23, 66, 83, 56, 67, 33, 40, 93, 5, 11, 68};
-        assertArrayEquals(Sorting.quickSort(a), res);
-    }
-
     @Test
     public void testMergeSort() {
-        int a[] = {68, 23, 66, 83, 56, 67, 33, 40, 93, 5, 11, 68};
+        int a[] = {66, 9, 31, 96, 21, 17, 67, 54, 30, 81, 51, 87, 66, 26, 28, 50, 9, 86, 58, 63, 76,
+                55, 66, 97, 59, 13, 27, 59, 79, 41, 50, 22, 26, 56, 87, 50, 15, 23, 51, 55, 83, 16, 86, 23, 6, 61, 98, 16, 35, 49};
+        int res[] = {6, 9, 9, 13, 15, 16, 16, 17, 21, 22, 23, 23, 26, 26, 27, 28, 30, 31, 35, 41, 49, 50, 50, 50, 51, 51, 54, 55,
+                55, 56, 58, 59, 59, 61, 63, 66, 66, 66, 67, 76, 79, 81, 83, 86, 86, 87, 87, 96, 97, 98};
         assertArrayEquals(Sorting.mergeSort(a), res);
-    }
-
-    @Test
-    public void testShellSort() {
-        int a[] = {68, 23, 66, 83, 56, 67, 33, 40, 93, 5, 11, 68};
-        assertArrayEquals(Sorting.shellSort(a), res);
     }
 }

@@ -2,75 +2,8 @@ package ru.seniorkot.testing.lab1.task2;
 
 public class Sorting {
 
-    public static int[] insertionSort(int[] a){
-        for (int i = 1; i < a.length; i++){
-            int tmp = a[i];
-            int j = i-1;
-            while (j >= 0 && tmp < a[j]){
-                a[j+1] = a[j];
-                j--;
-            }
-            a[j+1] = tmp;
-        }
-        return a;
-    }
-
-    public static int[] selectionSort(int[] a){
-        for (int i = 0; i < a.length - 1; i++){
-            int index = i;
-            for (int j = i + 1; j < a.length; j++){
-                if (a[j] < a[index]){
-                    index = j; //searching for lowest index
-                }
-            }
-            swap(a, index, i);
-        }
-        return a;
-    }
-
-    public static int[] bubbleSort(int[] a){
-        int n = a.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (a[j] > a[j+1])
-                {
-                    swap(a, j, j+1);
-                }
-            }
-        }
-        return a;
-    }
-
-    public static int[] quickSort(int[] a){
-        return quickSorting(a, 0, a.length - 1);
-    }
-
     public static int[] mergeSort(int[] a){
         return mergeSorting(a, 0, a.length - 1);
-    }
-
-    public static int[] shellSort(int[] a){
-        int inner, outer;
-        int temp;
-
-        int h = 1;
-        while (h <= a.length / 3) {
-            h = h * 3 + 1;
-        }
-        while (h > 0) {
-            for (outer = h; outer < a.length; outer++) {
-                temp = a[outer];
-                inner = outer;
-
-                while (inner > h - 1 && a[inner - h] >= temp) {
-                    a[inner] = a[inner - h];
-                    inner -= h;
-                }
-                a[inner] = temp;
-            }
-            h = (h - 1) / 3;
-        }
-        return a;
     }
 
     private static int[] swap(int[] a, int i, int j){
