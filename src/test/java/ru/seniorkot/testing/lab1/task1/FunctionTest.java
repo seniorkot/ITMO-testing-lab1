@@ -64,7 +64,7 @@ public class FunctionTest {
 
     @Test
     public void testFuncZero() { // x = 0
-        double x = 1.0;
+        double x = 0;
         assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
     }
 
