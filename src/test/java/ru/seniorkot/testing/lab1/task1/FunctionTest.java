@@ -205,4 +205,52 @@ public class FunctionTest {
         double x = 0.9;
         assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
     }
+
+    @Test
+    public void testFuncToOne0(){ // x = 0.96
+        double x = 0.96;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
+
+    @Test
+    public void testFuncToOne1(){ // x = 0.961
+        double x = 0.961;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
+
+    @Test
+    public void testFuncToOne2(){ // x = 0.962
+        double x = 0.962;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
+
+    @Test
+    public void testFuncToOne3(){ // x = 0.97
+        double x = 0.97;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
+
+    @Test
+    public void testFuncToMinusOne0(){ // x = -0.96
+        double x = -0.96;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
+
+    @Test
+    public void testFuncToMinusOne1(){ // x = -0.961
+        double x = -0.961;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
+
+    @Test
+    public void testFuncToMinusOne2(){ // x = -0.962
+        double x = -0.962;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
+
+    @Test
+    public void testFuncToMinusOne3(){ // x = -0.97
+        double x = -0.97;
+        assertEquals(Math.asin(x), Function.arcsin(x, EPS), DELTA);
+    }
 }
