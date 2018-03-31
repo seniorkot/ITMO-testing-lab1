@@ -5,31 +5,70 @@ abstract public class AbstractHuman {
         BETELGEUSE, EARTH
     }
 
-    protected Origin origin;
-    Hand[] hand;
-    protected boolean offeringToPutSmallFishInEar;
+    private Origin origin;
+    private Eyes eyes;
+    private Hand[] hands;
+    private boolean offeringToPutSmallFishInEar;
 
-    void offerToPutSmallFishInEar() {
+    /*
+    origin and hands must not be changed after class extending AbstractHuman instantiated
+    so this constructor will be called through "super.(Origin origin)" in child class to set them
+     */
+    AbstractHuman(Origin origin) {
+        eyes = new Eyes();
 
-        //if AbstractHuman is holding a Flacon
-        if(hand != null && hand[0].getHeldObject() != null && hand[0].getHeldObject().getClass() == Flacon.class) {
-            Flacon flacon = (Flacon)hand[0].getHeldObject();
+        hands = new Hand[2];
+        hands[0] = new Hand();
+        hands[1] = new Hand();
 
-            //if Flacon exists and contains a Fish
-            if (flacon.getObject() != null && flacon.getObject().getClass() == Fish.class) {
-                Fish fish = (Fish)flacon.getObject();
+        this.origin = origin;
+        offeringToPutSmallFishInEar = false;
+    }
 
-                //if Fish is SMALL
-                if (fish.size == Fish.Size.SMALL) {
-                    offeringToPutSmallFishInEar = true;
-                } else throw new IllegalStateException("Fish is not Size.SMALL");
-            } else throw new NullPointerException("no Fish found");
-        } else throw new NullPointerException("no hands or no object or this object is not Flacon");
-     }
+    void changeObjectInHand(Object object) {
+        hands[0].setHeldObject(object);
+    }
 
+    void startBlincking() {
+        eyes.startBlinking();
+    }
+
+    boolean isOfferingToPutSmallFishInEar() {
+        return offeringToPutSmallFishInEar;
+    }
+
+    boolean isBlinking() {return eyes.getBlinking();}
 
     Origin getOrigin() {
         return origin;
     }
+
+    void offerToPutSmallFishInEar() {
+
+        //if AbstractHuman is holding something
+        if(hands[0].getHeldObject() != null) {
+
+            //if AbstractHuman is holding Flacon
+            if(hands[0].getHeldObject().getClass() == Flacon.class) {
+                Flacon flacon = (Flacon)hands[0].getHeldObject();
+
+                //if Flacon contains something
+                if(flacon.getObject() != null) {
+
+                    //if Flacon contains a Fish
+                    if(flacon.getObject().getClass() == Fish.class) {
+                        Fish fish = (Fish)flacon.getObject();
+
+                        //if Fish.Size is SMALL
+                        if(fish.getSize() == Fish.Size.SMALL) {
+                            offeringToPutSmallFishInEar = true;
+                        } else throw new IllegalStateException("implementation of AbstractHuman offers a Fish inside Flacon but Fish not SMALL");
+                    } else throw new IllegalStateException("implementation of AbstractHuman offers something inside Flacon but not a Fish");
+                } else throw new NullPointerException("implementation of AbstractHuman offers something inside Flacon but Flacon is empty");
+            } else throw new IllegalStateException("implementation of AbstractHuman offers something but has no Flacon");
+        } else throw new NullPointerException("implementation of AbstractHuman offers nothing");
+     }
+
+
 
 }

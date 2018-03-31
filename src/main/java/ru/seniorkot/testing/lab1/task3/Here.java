@@ -1,37 +1,72 @@
 package ru.seniorkot.testing.lab1.task3;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Here {
-    private AbstractHuman betelgeuseHuman;
+
+    private Ford ford;
     private Arthur arthur;
-    private ArrayList<DentrassiUnderwear> allDentrassiUnderwear;
-    private ArrayList<SquornshellousMattress> allSquornshellousMattresses;
+    private DentrassiUnderwear dentrassiUnderwear;
+    private SquornshellousMattress squornshellousMattress;
     private CornflakesPacket cornflakesPacket;
+    private Flacon flacon;
+    private Fish fish;
 
-    Here() {
+    Here(Ford ford,
+         Arthur arthur,
+         DentrassiUnderwear dentrassiUnderwear,
+         SquornshellousMattress squornshellousMattress,
+         CornflakesPacket cornflakesPacket,
+         Flacon flacon, Fish fish) {
 
-        allDentrassiUnderwear.add(new DentrassiUnderwear());
-        allDentrassiUnderwear.add(new DentrassiUnderwear());
+        //materialize squornshellousMattress
+        this.squornshellousMattress = squornshellousMattress;
 
-        //mattrasses are plural in text thus there is more than one
-        allSquornshellousMattresses.add(new SquornshellousMattress());
-        allSquornshellousMattresses.add(new SquornshellousMattress());
+        //materialize dentrassiUnderwear
+        this.dentrassiUnderwear = dentrassiUnderwear;
 
-        cornflakesPacket = null;
+        //materialize cornflakesPacket
+        this.cornflakesPacket = cornflakesPacket;
+
+        //materialize Flacon
+        this.flacon = flacon;
+
+        //materialize Fish
+        this.fish = fish;
+
+        //put Fish inside Flacon
+        this.flacon.setObject(this.fish);
 
         //materialize Ford
-        betelgeuseHuman = new Ford();
+        this.ford = ford;
+        if(this.ford == null)
+            throw new NullPointerException("no Ford is in Here");
+
+        //Ford holds Flacon with small yellow fish shimmering inside
+        this.ford.changeObjectInHand(this.flacon);
+        //(offers to put it in Arthur's ear"
+        this.ford.offerToPutSmallFishInEar();
 
         //materialize Arthur
-        arthur = new Arthur();
-        arthur.lookAtFord(true);
+        this.arthur = arthur;
+        if(this.arthur == null)
+            throw new NullPointerException("no Arthur is in Here");
+
+        //Arthur starts blinking and looks at Ford
+        this.arthur.lookAtFord(this.ford);
+        //Arthur wants to see something that extends SimpleFamiliarMentallyClingable class, cornflakesPacket for example
+        this.arthur.wantSFMCObjectAmongStuff(this.dentrassiUnderwear, this.squornshellousMattress,  this.ford, this.cornflakesPacket);
     }
 
-    AbstractHuman getBetelgeuseHuman() {return betelgeuseHuman;}
-    Arthur getArthur() {return arthur;}
-    ArrayList<DentrassiUnderwear> getAllDentrassiUnderwear() {return allDentrassiUnderwear;}
-    ArrayList<SquornshellousMattress> getAllSquornshellousMattresses() {return allSquornshellousMattresses;}
-    CornflakesPacket getCornflakesPacket() {return cornflakesPacket;}
+
+    public Ford getFord() {return ford;}
+    public Arthur getArthur(){return arthur;}
+    public DentrassiUnderwear getDentrassiUnderwear() {return dentrassiUnderwear;}
+    public SquornshellousMattress getSquornshellousMattress(){return squornshellousMattress;}
+    public CornflakesPacket getCornflakesPacket(){return cornflakesPacket;}
+    public Flacon getFlacon(){return flacon;}
+    public Fish getFish(){return fish;}
 
 }

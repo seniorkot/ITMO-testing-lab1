@@ -1,53 +1,45 @@
 package ru.seniorkot.testing.lab1.task3;
 
-public class Arthur {
+public class Arthur extends AbstractHuman{
 
     public enum Determination {
         LOW, HIGH
     }
 
-    Eyes eyes;
     private Determination determination;
 
     Arthur() {
-        eyes = new Eyes();
-        determination = Determination.LOW;
+        super(Origin.EARTH);
     }
 
-    void lookAtFord(boolean blinking) {
-        eyes.startBlinking();
-    }
-
-
-    void feelDetermined() {
-        determination = Determination.HIGH;
+    void lookAtFord(Ford ford) {
+        if (ford != null) {
+            startBlincking();
+        } else throw new NullPointerException("Arthur looks at Ford but there is no Ford");
     }
 
     Determination getDetermination() {return determination;}
 
-    void wantSFMCObjectAmongStuff(Here here) {
-        //if there are DentrassiUnderwear and SquornshellousMattresses
-        if(!here.getAllDentrassiUnderwear().isEmpty() && !here.getAllSquornshellousMattresses().isEmpty()){
+    void wantSFMCObjectAmongStuff(DentrassiUnderwear dentrassiUnderwear,
+                                  SquornshellousMattress squornshellousMattress,
+                                  AbstractHuman abstractHuman,
+                                  CornflakesPacket cornflakesPacket) {
 
-            //if BetelgeuseHuman exists and is holding a Flacon
-            if(here.getBetelgeuseHuman().hand[0].getHeldObject() != null &&
-                    here.getBetelgeuseHuman().hand[0].getHeldObject().getClass() == Flacon.class) {
-                Flacon flacon = (Flacon)here.getBetelgeuseHuman().hand[0].getHeldObject();
+        /*
+        if there are DentrassiUnderwear and SquornshellousMattresses and
+        there is AbstractHuman whose Origin is BETELGEUSE and AbstractHuman is OfferingToPutSmallFishInEar
+        and there is cornflakesPacket
+         */
+        if(dentrassiUnderwear != null &&
+                squornshellousMattress != null &&
+                abstractHuman != null &&
+                abstractHuman.getOrigin() == Origin.BETELGEUSE &&
+                abstractHuman.isOfferingToPutSmallFishInEar() &&
+                cornflakesPacket != null){
 
-                //if Flacon exists and contains a Fish
-                if (flacon.getObject() != null && flacon.getObject().getClass() == Fish.class) {
-                    Fish fish = (Fish)flacon.getObject();
+            determination = Determination.HIGH;
 
-                    //if Fish is SMALL and BetelgeuseHuman is offeringToPutSmallFishInEar and Arthur sees CornflackesPacket
-                    if (fish.size == Fish.Size.SMALL &&
-                            here.getBetelgeuseHuman().offeringToPutSmallFishInEar &&
-                            eyes.seeObject(here.getCornflakesPacket())) {
-                        //then feelDetermined()
-                        feelDetermined();
-                    }
-                }
-            }
-        }
+        } else determination = Determination.LOW;
     }
 
 }

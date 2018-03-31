@@ -8,9 +8,9 @@ public class Fish {
         SMALL, MODERATE, BIG
     }
 
-    Size size;
-    Color color;
-    boolean  shimmering;
+    private Size size;
+    private Color color;
+    private boolean shimmering;
 
 
     Fish() {
@@ -32,6 +32,8 @@ public class Fish {
     Color getColor() {
         return color;
     }
+
+    boolean getShimmering() {return shimmering;}
 
     private void swim() {
         this.shimmering = true;

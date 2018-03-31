@@ -4,7 +4,7 @@ public class Hand {
 
     private Object heldObject;
 
-    Hand(Object item) {
+    Hand() {
         this.heldObject = null;
     }
 

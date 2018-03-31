@@ -9,10 +9,18 @@ public class Flacon {
     private Material material;
     private Object object;
 
-    Flacon(Material material, Object object) {
-        material = material == null ? Material.GLASS : material;
+    Flacon() {
+        material = Material.GLASS;
+        object = null;
+    }
 
+    Flacon(Material material) {
+        material = material == null ? Material.GLASS : material;
+        object = null;
         this.material = material;
+    }
+
+    void setObject(Object object) {
         this.object = object;
     }
 
