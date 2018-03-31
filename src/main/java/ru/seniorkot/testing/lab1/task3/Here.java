@@ -42,7 +42,7 @@ public class Here {
         //materialize Ford
         this.ford = ford;
         if(this.ford == null)
-            throw new NullPointerException("no Ford is in Here");
+            throw new NullPointerException("no Ford in Here");
 
         //Ford holds Flacon with small yellow fish shimmering inside
         this.ford.changeObjectInHand(this.flacon);
@@ -52,7 +52,7 @@ public class Here {
         //materialize Arthur
         this.arthur = arthur;
         if(this.arthur == null)
-            throw new NullPointerException("no Arthur is in Here");
+            throw new NullPointerException("no Arthur in Here");
 
         //Arthur starts blinking and looks at Ford
         this.arthur.lookAtFord(this.ford);

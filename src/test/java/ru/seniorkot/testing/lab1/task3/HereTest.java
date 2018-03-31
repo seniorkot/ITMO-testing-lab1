@@ -18,7 +18,7 @@ public class HereTest {
 
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage(
-                CoreMatchers.equalTo("no Arthur is in Here"));
+                CoreMatchers.equalTo("no Arthur in Here"));
 
         here = new Here(new Ford(), null, new DentrassiUnderwear(),
                 new SquornshellousMattress(), null,
@@ -31,7 +31,7 @@ public class HereTest {
 
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage(
-                CoreMatchers.equalTo("no Ford is in Here"));
+                CoreMatchers.equalTo("no Ford in Here"));
 
         here = new Here(null, new Arthur(), new DentrassiUnderwear(),
                 new SquornshellousMattress(), null,
@@ -39,10 +39,22 @@ public class HereTest {
 
     }
 
+    // no need to test SquornshellousMattress as it is the same importance as DentrassiUnderwear
     @Test
     public void testHereWithoutDentrassiUnderwear() {
 
-        here = new Here(new Ford(), new Arthur(), null,
+        here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
+                new SquornshellousMattress(), null,
+                new Flacon(Flacon.Material.GLASS), new Fish(Fish.Size.SMALL, Color.YELLOW));
+
+        Assert.assertEquals(here.getArthur().getDetermination(), Arthur.Determination.LOW);
+
+    }
+
+    @Test
+    public void testHereWithoutFish() {
+
+        here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
                 new SquornshellousMattress(), null,
                 new Flacon(Flacon.Material.GLASS), new Fish(Fish.Size.SMALL, Color.YELLOW));
 
