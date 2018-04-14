@@ -2,45 +2,22 @@ package ru.seniorkot.testing.lab1.task2;
 
 public class Sorting {
 
-    public static int[] mergeSort(int[] a){
+    public static int[] mergeSort(int[] a) throws IllegalArgumentException{
+        if (a == null){
+            throw new IllegalArgumentException();
+        }
         return mergeSorting(a, 0, a.length - 1);
     }
 
-    private static int[] swap(int[] a, int i, int j){
-        int tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-        return a;
-    }
-
-    private static int[] quickSorting(int[] a, int lower, int higher){
-        int i = lower;
-        int j = higher;
-
-        int pivot = a[lower+(higher-lower)/2];
-        // Divide into two arrays
-        while (i <= j) {
-            while (a[i] < pivot) {
-                i++;
-            }
-            while (a[j] > pivot) {
-                j--;
-            }
-            if (i <= j) {
-                swap(a, i, j);
-                //move index to next position on both sides
-                i++;
-                j--;
-            }
-        }
-        if (lower < j)
-            quickSorting(a, lower, j);
-        if (i < higher)
-            quickSorting(a, i, higher);
-        return a;
-    }
-
-    private static int[] merge(int a[], int l, int m, int r){
+    /**
+     * This function merges 2 sorted arrays (a[l...m] & a[m...r])
+     * @param a - input array
+     * @param l - left index
+     * @param m - middle index
+     * @param r - right index
+     * @return sorted array from l position to r
+     */
+    public static int[] merge(int a[], int l, int m, int r){
         int i, j, k;
         int n1 = m - l + 1;
         int n2 =  r - m;
@@ -94,7 +71,18 @@ public class Sorting {
         return a;
     }
 
-    private static int[] mergeSorting(int a[], int l, int r){
+    /**
+     * This method divides array into 2 parts and merges them after sorting
+     * @param a - int array (not sorted)
+     * @param l - left index
+     * @param r - right index
+     * @return - sorted int array from l position to r
+     */
+    public static int[] mergeSorting(int a[], int l, int r){
+        if (a == null || l > r){
+            throw new IllegalArgumentException();
+        }
+
         if (l < r)
         {
             int m = l+(r-l)/2;
