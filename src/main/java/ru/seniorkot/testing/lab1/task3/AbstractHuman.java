@@ -43,6 +43,8 @@ abstract public class AbstractHuman {
         return origin;
     }
 
+    Object getHeldObject() {return hands[0].getHeldObject();}
+
     void offerToPutSmallFishInEar() {
 
         //if AbstractHuman is holding something

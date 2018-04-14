@@ -51,6 +51,20 @@ public class HereTest {
 
     }
 
+
+    @Test
+    public void testHereWithPlasticFlacon() {
+        expectedException.expect(IllegalStateException.class);
+        expectedException.expectMessage(
+                CoreMatchers.equalTo("not a GLASS Flacon in Ford's hand"));
+
+        here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
+                new SquornshellousMattress(), null,
+                new Flacon(Flacon.Material.PLASTIC), new Fish(Fish.Size.SMALL, Color.YELLOW));
+
+    }
+
+
     @Test
     public void testHereWithoutFlacon() {
 
@@ -79,10 +93,6 @@ public class HereTest {
 
     @Test
     public void testHereIdeal() {
-
-        expectedException.expect(NullPointerException.class);
-        expectedException.expectMessage(
-                CoreMatchers.equalTo("implementation of AbstractHuman offers something inside Flacon but Flacon is empty"));
 
         here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
                 new SquornshellousMattress(), null,

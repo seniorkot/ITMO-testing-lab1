@@ -49,6 +49,11 @@ public class Here {
 
         //Ford holds Flacon with small yellow fish shimmering inside
         this.ford.changeObjectInHand(this.flacon);
+        Flacon heldFlacon = (Flacon)this.ford.getHeldObject();
+        if (heldFlacon.getMaterial() != Flacon.Material.GLASS) {
+            throw new IllegalStateException("not a GLASS Flacon in Ford's hand");
+        }
+
         //(offers to put it in Arthur's ear"
         this.ford.offerToPutSmallFishInEar();
 
