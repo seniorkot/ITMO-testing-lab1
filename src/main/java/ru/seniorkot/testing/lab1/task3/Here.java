@@ -32,12 +32,15 @@ public class Here {
 
         //materialize Flacon
         this.flacon = flacon;
+        if(this.flacon == null)
+            throw new NullPointerException("no Flacon in Here");
 
         //materialize Fish
         this.fish = fish;
 
         //put Fish inside Flacon
         this.flacon.setObject(this.fish);
+
 
         //materialize Ford
         this.ford = ford;

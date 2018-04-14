@@ -10,8 +10,7 @@ public class HereTest {
 
     Here here;
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
+    @Rule  public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void testHereWithoutArthur() {
@@ -39,6 +38,7 @@ public class HereTest {
 
     }
 
+
     // no need to test SquornshellousMattress as it is the same importance as DentrassiUnderwear
     @Test
     public void testHereWithoutDentrassiUnderwear() {
@@ -52,13 +52,39 @@ public class HereTest {
     }
 
     @Test
-    public void testHereWithoutFish() {
+    public void testHereWithoutFlacon() {
+
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage(
+                CoreMatchers.equalTo("no Flacon in Here"));
 
         here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
                 new SquornshellousMattress(), null,
-                new Flacon(Flacon.Material.GLASS), new Fish(Fish.Size.SMALL, Color.YELLOW));
-
-        Assert.assertEquals(here.getArthur().getDetermination(), Arthur.Determination.LOW);
+                null, new Fish(Fish.Size.SMALL, Color.YELLOW));
 
     }
+
+    @Test
+    public void testHereWithoutFish() {
+
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage(
+                CoreMatchers.equalTo("implementation of AbstractHuman offers something inside Flacon but Flacon is empty"));
+
+        here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
+                new SquornshellousMattress(), null,
+                new Flacon(Flacon.Material.GLASS), null);
+    }
+
+
+    @Test
+    public void testHereIdeal() {
+        here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
+                new SquornshellousMattress(), null,
+                new Flacon(Flacon.Material.GLASS), new Fish(Fish.Size.SMALL, Color.YELLOW));
+    }
+
+
+
+
 }
