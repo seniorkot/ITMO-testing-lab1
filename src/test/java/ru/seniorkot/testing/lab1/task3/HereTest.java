@@ -79,6 +79,11 @@ public class HereTest {
 
     @Test
     public void testHereIdeal() {
+
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage(
+                CoreMatchers.equalTo("implementation of AbstractHuman offers something inside Flacon but Flacon is empty"));
+
         here = new Here(new Ford(), new Arthur(), new DentrassiUnderwear(),
                 new SquornshellousMattress(), null,
                 new Flacon(Flacon.Material.GLASS), new Fish(Fish.Size.SMALL, Color.YELLOW));
