@@ -15,7 +15,11 @@ public class Sorting {
      * @param R - 2nd subarray
      * @return merged arrays
      */
-    public static int[] merge(int L[], int R[]){
+    public static int[] merge(int L[], int R[]) throws IllegalArgumentException{
+        if (L == null || R == null){
+            throw new IllegalArgumentException();
+        }
+
         int i, j, k;
         int n1 = L.length;
         int n2 =  R.length;
@@ -67,7 +71,7 @@ public class Sorting {
      * @param r - right index
      * @return - sorted int array from l position to r
      */
-    public static int[] mergeSorting(int a[], int l, int r){
+    public static int[] mergeSorting(int a[], int l, int r) throws IllegalArgumentException{
         if (a == null || l > r){
             throw new IllegalArgumentException();
         }
