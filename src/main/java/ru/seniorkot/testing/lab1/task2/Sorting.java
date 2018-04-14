@@ -6,6 +6,9 @@ public class Sorting {
         if (a == null){
             throw new IllegalArgumentException();
         }
+        if (a.length <= 1){
+            return a;
+        }
         return mergeSorting(a, 0, a.length - 1);
     }
 
@@ -72,7 +75,7 @@ public class Sorting {
      * @return - sorted int array from l position to r
      */
     public static int[] mergeSorting(int a[], int l, int r) throws IllegalArgumentException{
-        if (a == null || l > r){
+        if (a == null || l > r || l < 0 || r >= a.length){
             throw new IllegalArgumentException();
         }
 
