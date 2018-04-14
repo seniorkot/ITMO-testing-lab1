@@ -10,32 +10,21 @@ public class Sorting {
     }
 
     /**
-     * This function merges 2 sorted arrays (a[l...m] & a[m...r])
-     * @param a - input array
-     * @param l - left index
-     * @param m - middle index
-     * @param r - right index
-     * @return sorted array from l position to r
+     * This function merges 2 sorted arrays
+     * @param L - 1st subarray
+     * @param R - 2nd subarray
+     * @return merged arrays
      */
-    public static int[] merge(int a[], int l, int m, int r){
+    public static int[] merge(int L[], int R[]){
         int i, j, k;
-        int n1 = m - l + 1;
-        int n2 =  r - m;
-
-    /* create tmp arrays */
-        int L[] = new int[n1];
-        int R[] = new int[n2];
-
-    /* Copy data to tmp arrays L[] and R[] */
-        for (i = 0; i < n1; i++)
-            L[i] = a[l + i];
-        for (j = 0; j < n2; j++)
-            R[j] = a[m + 1+ j];
+        int n1 = L.length;
+        int n2 =  R.length;
+        int a[] = new int[n1 + n2];
 
     /* Merge the temp arrays back into arr[l..r]*/
         i = 0; // Initial index of first subarray
         j = 0; // Initial index of second subarray
-        k = l; // Initial index of merged subarray
+        k = 0; // Initial index of merged subarray
         while (i < n1 && j < n2)
         {
             if (L[i] <= R[j])
@@ -88,11 +77,11 @@ public class Sorting {
             int m = l+(r-l)/2;
 
             // Sort first and second halves
-            mergeSorting(a, l, m);
-            mergeSorting(a, m+1, r);
+            int L[] = mergeSorting(a, l, m);
+            int R[] = mergeSorting(a, m+1, r);
 
-            merge(a, l, m, r);
+            return merge(L, R);
         }
-        return a;
+        return new int[]{a[l]};
     }
 }
