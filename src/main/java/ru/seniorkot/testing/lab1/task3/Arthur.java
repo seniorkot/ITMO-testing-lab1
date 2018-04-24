@@ -3,7 +3,7 @@ package ru.seniorkot.testing.lab1.task3;
 public class Arthur extends AbstractHuman{
 
     public enum Determination {
-        LOW, MEDIUM, HIGH
+        LOW, HIGH
     }
 
     private Determination determination;
@@ -39,7 +39,7 @@ public class Arthur extends AbstractHuman{
 
             determination = Determination.HIGH;
 
-        } else determination = Determination.MEDIUM;
+        } else determination = Determination.LOW;
     }
 
 }

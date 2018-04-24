@@ -79,7 +79,7 @@ public class Sorting {
             throw new IllegalArgumentException();
         }
 
-        if (l > r)
+        if (l < r)
         {
             int m = l+(r-l)/2;
 
